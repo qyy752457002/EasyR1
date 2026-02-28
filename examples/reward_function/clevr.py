@@ -32,7 +32,13 @@ def format_reward(response: str) -> float:
 def accuracy_reward(response: str, ground_truth: str) -> float:
     try:
         content_match = re.search(r"<answer>(.*?)</answer>", response)
-        given_answer = content_match.group(1).strip() if content_match else response.strip()
+        if not content_match:
+            # 如果找不到 <answer> 标签，格式不正确，直接返回 0.0
+            return 0.0
+        given_answer = content_match.group(1).strip()
+        if not given_answer:
+            # 如果答案为空，返回 0.0
+            return 0.0
         if grade_answer(given_answer, ground_truth.strip()):
             return 1.0
     except Exception:

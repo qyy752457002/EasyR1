@@ -1,6 +1,6 @@
 data:
-  train_files: ./examples/CLEVR/data/train-00000-of-00008.parquet
-  val_files: ./examples/CLEVR/data/test-00000-of-00001.parquet
+  train_files: ./examples/CLEVR/data/train-00000-of-00010.parquet
+  val_files: ./examples/CLEVR/data/test-00000-of-00002.parquet
   prompt_key: question
   answer_key: answer
   image_key: image
@@ -96,7 +96,7 @@ trainer:
   experiment_name: qwen3_vl_2b_CLEVR_grpo
   logger: ["file", "tensorboard"]
   nnodes: 1
-  n_gpus_per_node: 3
+  n_gpus_per_node: 4
   max_try_make_batch: 20  # -1 means no limit
   val_freq: 5  # -1 to disable
   val_before_train: true
